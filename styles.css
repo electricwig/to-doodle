@@ -128,10 +128,10 @@ button{
     text-decoration:line-through 2px;
   }
 
-.blue {
-    background-color: aqua;
-}
-
-.green {
-    background-color: aquamarine;
+#footer {
+    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
+    font-size: 10px;
+    margin-left: 50px;
+    color:  rgb(252, 182, 183);
+    text-align: left;
 }

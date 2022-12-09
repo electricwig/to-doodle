@@ -4,6 +4,7 @@ const toolbar = document.getElementById('toolbar');
 const sidebar = document.getElementById('sidebar');
 const mainTitle = document.getElementById('main-title');
 const subtitle = document.getElementById('subtitle');
+const footer = document.getElementById('footer');
 // main-content
 const mainContent = document.getElementById('main-content');
 // list button
@@ -77,6 +78,7 @@ toolbar.addEventListener('click', e => {
         let savedTheme = JSON.stringify(themeKey);
         //now you can store it in your local storage
         window.localStorage.setItem("themeKey", savedTheme);
+        addTodoodles();
     }
 });
 
@@ -182,8 +184,10 @@ function changeTheme() {
             subtitle.style.color = 'black';
             textForm.style.backgroundColor = 'rgb(249, 206, 207)';
             textForm.style.border = '2px dashed cadetblue';
+            textForm.style.color = 'black';
             mainContent.style.backgroundColor = 'rgb(249, 206, 207)';
             mainContent.style.border = '2px dashed cadetblue';
+            footer.style.color = 'rgb(252, 182, 183)';
             ctx.strokeStyle = "cadetblue";
             break;
         case 'White and Black':
@@ -200,8 +204,10 @@ function changeTheme() {
             subtitle.style.color = 'black';
             textForm.style.backgroundColor = 'white';
             textForm.style.border = '2px dashed darkgrey';
+            textForm.style.color = 'black';
             mainContent.style.backgroundColor = 'white';
             mainContent.style.border = '2px dashed darkgrey';
+            footer.style.color = 'rgb(241, 241, 241)';
             ctx.strokeStyle = "darkgrey";
             break;
         case 'Black and Green':
@@ -221,7 +227,9 @@ function changeTheme() {
             textForm.style.color = 'green';
             mainContent.style.backgroundColor = 'black';
             mainContent.style.border = '2px dashed darkgreen';
+            footer.style.color = 'rgb(40, 40, 40)';
             ctx.strokeStyle = "darkgreen";
+            addTodoodles();
             break;
     }
 }
@@ -273,6 +281,16 @@ function addTodoodles() {
     // clear current 'todoodles' html
     todoodles = "";
 
+    let mainText = "";
+    
+    // set list text color
+    if (themes[themeKey] == "Black and Green") {
+        mainText = 'style="color:green;"';
+    }
+    else {
+        mainText = 'style="color:black;"';
+    }
+
     // retrieve to_do_items from local storage
     to_do_items = JSON.parse(localStorage.getItem("to_do_items") || "[]");
 
@@ -284,7 +302,7 @@ function addTodoodles() {
         if (to_do_items[i][key] == true) {
             // set todoodles html to ... 
             todoodles +=
-            '<div class="textBlock">' +
+            '<div class="textBlock"' + mainText +  '>' +
                 '<label>' +
                 '<input type="checkbox" checked="checked" id="itemdone" class="strikethrough" value="0">' +
                 '<span>' + key + "</span>" +
@@ -294,7 +312,7 @@ function addTodoodles() {
         else {
             // set todoodles html to ... 
             todoodles +=
-            '<div class="textBlock">' +
+            '<div class="textBlock"' + mainText +  '>' +
                 '<label>' +
                 '<input type="checkbox" id="itemdone" class="strikethrough" value="0">' +
                 '<span>' + key + "</span>" +
