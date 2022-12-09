@@ -165,7 +165,7 @@ function changeTheme() {
     if (themeKey > themes.length -1){
         themeKey = 0;
     }
-    themeButton.innerHTML = "Theme: " + themes[themeKey];
+    //themeButton.innerHTML = "Theme: " + themes[themeKey];
     switch(themes[themeKey]) {
         case 'Pink and Blue':
             document.body.style.backgroundColor = 'rgb(249, 206, 207)';
