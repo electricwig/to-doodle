@@ -2,6 +2,8 @@
 const toolbar = document.getElementById('toolbar');
 // sidebar
 const sidebar = document.getElementById('sidebar');
+const mainTitle = document.getElementById('main-title');
+const subtitle = document.getElementById('subtitle');
 // main-content
 const mainContent = document.getElementById('main-content');
 // list button
@@ -12,6 +14,8 @@ const doodleButton = document.getElementById('doodle');
 const clearDoodle = document.getElementById('clear-doodle');
 // clear list button
 const clearList = document.getElementById('clear-list');
+// clear list button
+const themeButton = document.getElementById('change-theme');
 // main 'to-do' list
 const mainlist = document.getElementById('main-content');
 // text form
@@ -41,6 +45,11 @@ var todoodles = "";
 // array to store 'to-do' items
 var to_do_items = [];
 
+// colour themes
+var themes = ["Pink and Blue", "White and Black", "Black and Green"];
+var themeKey = 0;
+
+
 // toggle between modes on click
 toolbar.addEventListener('click', e => {
     if (e.target.id === 'doodle') {
@@ -61,6 +70,14 @@ toolbar.addEventListener('click', e => {
         to_do_items = [];
         textForm.focus();
     }
+    else if (e.target.id === 'change-theme') {
+        themeKey ++;
+        changeTheme();
+        toggleModes();
+        let savedTheme = JSON.stringify(themeKey);
+        //now you can store it in your local storage
+        window.localStorage.setItem("themeKey", savedTheme);
+    }
 });
 
 mainContent.addEventListener('click', e=> {
@@ -74,13 +91,39 @@ mainContent.addEventListener('click', e=> {
 
 });
 
+// startup
+
+function startup() {
+    let savedTheme = window.localStorage.getItem("themeKey");
+    themeKey = JSON.parse(savedTheme);   
+    toggleModes();
+    changeTheme();
+    addTodoodles();
+}
+
 // toggle function
 function toggleModes () {
     if (doodleMode) {
-        console.log('doodle mode active!');
         // 'doodle' mode
-        doodleButton.style.backgroundColor = "rgb(249, 206, 207)";
-        listButton.style.backgroundColor = "powderblue";
+        if (themes[themeKey] == "Pink and Blue") {
+            doodleButton.style.backgroundColor = "rgb(249, 206, 207)";
+            doodleButton.style.color = "black";
+            listButton.style.backgroundColor = "powderblue";
+            listButton.style.color = "black";
+        }
+        else if (themes[themeKey] == "White and Black") {
+            doodleButton.style.backgroundColor = "white";
+            doodleButton.style.color = "black";
+            listButton.style.backgroundColor = "lightgrey";
+            listButton.style.color = "black";
+        }
+        else if (themes[themeKey] == "Black and Green") {
+            doodleButton.style.backgroundColor = "black";
+            doodleButton.style.color = "green";
+            listButton.style.backgroundColor = "yellowgreen";
+            listButton.style.color = "green";
+        }
+
         clearDoodle.style.display = "block";
         clearList.style.display = "none";
         sidebar.style.zIndex = "-5";
@@ -88,10 +131,25 @@ function toggleModes () {
         textForm.disabled = true;
     }
     else {
-        console.log('list mode active!');
         // 'list' mode
-        listButton.style.backgroundColor = "rgb(249, 206, 207)";
-        doodleButton.style.backgroundColor = "powderblue";
+        if (themes[themeKey] == "Pink and Blue") {
+            listButton.style.backgroundColor = "rgb(249, 206, 207)";
+            listButton.style.color = "black";
+            doodleButton.style.backgroundColor = "powderblue";
+            doodleButton.style.color = "black";
+        }
+        else if (themes[themeKey] == "White and Black") {
+            listButton.style.backgroundColor = "white";
+            listButton.style.color = "black";
+            doodleButton.style.backgroundColor = "lightgrey";
+            doodleButton.style.color = "black";
+        }
+        else if (themes[themeKey] == "Black and Green") {
+            listButton.style.backgroundColor = "black";
+            listButton.style.color = "green";
+            doodleButton.style.backgroundColor = "yellowgreen";
+            doodleButton.style.color = "green";
+        }
         clearList.style.display = "block";
         clearDoodle.style.display = "none";
         sidebar.style.zIndex = "0";
@@ -99,13 +157,78 @@ function toggleModes () {
         textForm.disabled = false;
         textForm.focus();
     }
-    addTodoodles();
   }
 
+// ** THEME FUNCTIONS ***
+
+function changeTheme() {
+    if (themeKey > themes.length -1){
+        themeKey = 0;
+    }
+    themeButton.innerHTML = "Theme: " + themes[themeKey];
+    switch(themes[themeKey]) {
+        case 'Pink and Blue':
+            document.body.style.backgroundColor = 'rgb(249, 206, 207)';
+            toolbar.style.backgroundColor = 'powderblue';
+            toolbar.style.border = '2px dashed black';
+            clearDoodle.style.backgroundColor = 'rgb(249, 206, 207)';
+            clearList.style.backgroundColor = 'powderblue';
+            clearDoodle.style.backgroundColor = 'powderblue';
+            themeButton.style.backgroundColor = 'powderblue';
+            clearList.style.color = 'black';
+            clearDoodle.style.color = 'black';
+            themeButton.style.color = 'black';
+            mainTitle.style.color = 'black';
+            subtitle.style.color = 'black';
+            textForm.style.backgroundColor = 'rgb(249, 206, 207)';
+            textForm.style.border = '2px dashed cadetblue';
+            mainContent.style.backgroundColor = 'rgb(249, 206, 207)';
+            mainContent.style.border = '2px dashed cadetblue';
+            ctx.strokeStyle = "cadetblue";
+            break;
+        case 'White and Black':
+            document.body.style.backgroundColor = 'white';
+            toolbar.style.backgroundColor = 'lightgrey';
+            toolbar.style.border = '2px dashed black';
+            clearList.style.backgroundColor = 'lightgrey';
+            clearDoodle.style.backgroundColor = 'lightgrey';
+            themeButton.style.backgroundColor = 'lightgrey';
+            clearList.style.color = 'black';
+            clearDoodle.style.color = 'black';
+            themeButton.style.color = 'black';
+            mainTitle.style.color = 'black';
+            subtitle.style.color = 'black';
+            textForm.style.backgroundColor = 'white';
+            textForm.style.border = '2px dashed darkgrey';
+            mainContent.style.backgroundColor = 'white';
+            mainContent.style.border = '2px dashed darkgrey';
+            ctx.strokeStyle = "darkgrey";
+            break;
+        case 'Black and Green':
+            document.body.style.backgroundColor = 'black';
+            toolbar.style.backgroundColor = 'yellowgreen';
+            toolbar.style.border = '2px dashed green';
+            clearList.style.backgroundColor = 'yellowgreen';
+            clearDoodle.style.backgroundColor = 'yellowgreen';
+            themeButton.style.backgroundColor = 'yellowgreen';
+            clearList.style.color = 'green';
+            clearDoodle.style.color = 'green';
+            themeButton.style.color = 'green';
+            mainTitle.style.color = 'green';
+            subtitle.style.color = 'green';
+            textForm.style.backgroundColor = 'black';
+            textForm.style.border = '2px dashed darkgreen';
+            textForm.style.color = 'green';
+            mainContent.style.backgroundColor = 'black';
+            mainContent.style.border = '2px dashed darkgreen';
+            ctx.strokeStyle = "darkgreen";
+            break;
+    }
+}
 
 // *** DOODLE FUNCTIONS ***
 
-ctx.strokeStyle = "cadetblue";
+//ctx.strokeStyle = "darkgrey";
 
 const draw = (e) => {
     if (!isPainting) {

@@ -11,8 +11,11 @@
     <script src="./code.js" defer></script>
 </head>
 <!-- load toggleModes function on page load-->
-<body onload="toggleModes();">
-        <div id="toolbar"><button id="list">List Mode</button><button id="doodle">Doodle Mode</button><button id="clear-doodle">Clear Doodle</button><button id="clear-list">Clear List</button></div>
+<body onload="startup();">
+    <div id="toolbar">
+        <button id="list">List Mode</button><button id="doodle">Doodle Mode</button><button id="clear-doodle">Clear Doodle</button><button id="clear-list">Clear List</button><button id="change-theme">Theme: Pink & Blue</label>
+    </div>
+
 
         <div class="drawing-board">
             <canvas id="drawing-board"></canvas>
@@ -24,8 +27,8 @@
 
             <aside class="sidebar" id="sidebar">
                 
-                <h1>to-doodle</h1>
-                <p>
+                <h1 id="main-title">to-doodle</h1>
+                <p id="subtitle">
                     What's on your to-do list today?
                 </p>
 

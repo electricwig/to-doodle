@@ -80,6 +80,11 @@ aside {
     z-index: 1;
 }
 
+#themelabel {
+    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
+    padding: 10px;
+    align-self: right;
+}
 
 
 
@@ -117,7 +122,6 @@ button{
     line-height: 1.5;
     padding: 15px;
     margin-top: 5px;
-    margin-right: 100px;
   }
 
   .strikethrough:checked + span{
