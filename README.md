@@ -1,1 +1,18 @@
-# to-doodle
+# TO-DOODLE
+#### Video Demo: [https://youtu.be/yGweeGkYN78]
+#### Description:
+To-Doodle is a browser based 'to-do' list app. The name was suggested by my wife, as that's what she calls her daily to-do list, but it also got me thinking: what if, as well as a daily to-do list, it could also have 'doodling' capabilities. 
+
+To approach my application, I divided it into three steps. Step 1 was planning out how the app should look and making a simple html and CSS template that worked well on both browser and mobile. Step 2 was adding in the 'doodle' functionality. And Step 3 was the actual to-do list functionality. Here's a little more info about each step: 
+
+###### Step 1 - Prototype Layout
+After some research, I decided to use flex box for the layout - this seemed like the best option for making the application responsive to both browser and mobile. After watching a few YouTube tutorials and reading around online, it was relatively easy to implement. I settled on a two column layout - the left hand side for the title, subtitle and text form (where the user inputs their to-do item) and the right hand side for the main list. I also added a toolbar at the top. Finally I had some fun styling the page, going for what is hopefully a simple and somewhat retro aesthetic, with dashed lines. 
+
+###### Step 2 - Doodle Function
+Next it was time for the doodling function. This used Javascript to draw onto the canvas layer. The bulk of code for the 'doodle' function was based on an existing YouTube tutorial called 'Create a drawing app using Javascript and canvas' (https://dev.to/javascriptacademy/create-a-drawing-app-using-javascript-and-canvas-2an1) although I refactored and simplified it. It was also at this point that I began to realize that I would need to implement two 'modes' - doodle mode and list mode - so that the list elements and canvas could each be used as necessary (otherwise the canvas blocked the list items and vice versa). I implemented a simple boolean toggle and in 'doodle mode' the canvas layer is pushed above the list elements by changing its z index. 
+
+###### Step 3 - The List
+Once I had the simple doodling functionality up and running with some placeholder html list elements, it was time to implement the real to-do list functions. Originally I tried using a flask/SQLite3 database system, similar to the Finance problem set, but ran into some issues with the page refreshing with each 'post' submission - causing the doodle to be wiped from the canvas. It also seemed like overkill to be using Flask and a database for a simple list app. So I changed tact, and began looking at other ways of storing data, eventually settling on using the browser's local storage. Each item on a user's to-do list is a simple dictionary object with the key as the item itself and the value as a boolean originally set to false. When the item is checked off on their list, the value is modified to true. The item dicts are added to an array (to maintain their order) and saved and retrieved from local storage via the Json parsing functions. This was a fun and challenging system to set up and I like the way the items are retained in browser memory - so the same list will stay as long as the user doesn't clear their cache.
+
+###### (Bonus) Step 4 - Final Polish and adding Themes
+Now that everything was up and running, I added a few final touches and refactored the code. The main extra thing I added was a 'change theme' button, that cycles through an array of themes - there are three currently - and reloads the page with new CSS styles. As with the user's to-do list, the theme choice is also saved in local storage so that it will be maintained the next time they open the browser. 
