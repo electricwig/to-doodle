@@ -1,137 +1,123 @@
 body {
-   background-color: rgb(249, 206, 207);
+  background-color: rgb(249, 206, 207);
 }
-
 
 .drawing-board {
-    position: fixed;
-    z-index: 0;
+  position: fixed;
+  z-index: 0;
 }
-
 
 /* display grid solved textarea and radio button input issue */
 
 .flex-container {
-    display:grid;
+  display: grid;
 }
-
 
 @media (min-width: 56.25em) {
-
-   
-    /* nesting flex container inside 'media' rule for responsive mobile layout */
-    /* 56.25 em is 900px divided by 16 */ 
-    .flex-container {
-        display: flex;
-    }       
+  /* nesting flex container inside 'media' rule for responsive mobile layout */
+  /* 56.25 em is 900px divided by 16 */
+  .flex-container {
+    display: flex;
+  }
 }
-
 
 h1 {
-    font-size: 5.7em;
-    font-family: 'Times New Roman', Times, serif;
+  font-size: 5.7em;
+  font-family: "Times New Roman", Times, serif;
 }
 
-
 section {
-    margin-top: 100px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 100px;
-    margin-right: 50px;
-
-    /*background-color: pink;*/
-    padding: 10px;
-    min-height: 350px;
-    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
-    border: 2px dashed cadetblue;
-    z-index: 0;
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 100px;
+  margin-right: 50px;
+  padding: 10px;
+  min-height: 350px;
+  font-family: "Lucida Sans Typewriter", "Lucida Console", monaco,
+    "Bitstream Vera Sans Mono", monospace;
+  border: 2px dashed cadetblue;
+  z-index: 0;
 }
 
 aside {
-    padding: 50px;
-    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
-    z-index: 0;
-
+  padding: 50px;
+  font-family: "Lucida Sans Typewriter", "Lucida Console", monaco,
+    "Bitstream Vera Sans Mono", monospace;
+  z-index: 0;
 }
-
 
 .main-content {
-    flex: 1;
+  flex: 1;
 }
-
-
 
 .sidebar {
-    /* set sidebar to maximum width of 500 pixels */
-    flex: 0 0 500px;
-    flex-direction: column;
+  /* set sidebar to maximum width of 500 pixels */
+  flex: 0 0 500px;
+  flex-direction: column;
 }
 
-
 #toolbar {
-    background-color: powderblue;
-    border: dashed 2px;
-    display: flex;
-    margin-top: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 10px;
-    z-index: 1;
+  background-color: powderblue;
+  border: dashed 2px;
+  display: flex;
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 10px;
+  z-index: 1;
 }
 
 #themelabel {
-    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
-    padding: 10px;
-    align-self: right;
+  font-family: Lucida Sans Typewriter, Lucida Console, monaco,
+    Bitstream Vera Sans Mono, monospace;
+  padding: 10px;
+  align-self: right;
 }
 
-
-
-button{
-    background-color: powderblue;
-    border: dashed 2px;
-    margin-right: 10px;
-    padding: 5px;
-} 
-
-
-
+button {
+  background-color: powderblue;
+  border: dashed 2px;
+  margin-right: 10px;
+  padding: 5px;
+}
 
 .submitText {
-    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
-    line-height: 1.5;
-    border: 2px dashed cadetblue;
-    border-collapse: collapse;
-    width: 340px;
-    height: 50px;
-    padding: 10px;
-    background-color: rgb(249, 206, 207);
-    margin-bottom: 10px;
+  font-family: Lucida Sans Typewriter, Lucida Console, monaco,
+    Bitstream Vera Sans Mono, monospace;
+  line-height: 1.5;
+  border: 2px dashed cadetblue;
+  border-collapse: collapse;
+  width: 340px;
+  height: 50px;
+  padding: 10px;
+  background-color: rgb(249, 206, 207);
+  margin-bottom: 10px;
 }
 
 .submitText:focus {
-    outline: none !important;
-    border: 2px dashed cadetblue;
-  }
+  outline: none !important;
+  border: 2px dashed cadetblue;
+}
 
+.textBlock {
+  font-family: Lucida Sans Typewriter, Lucida Console, monaco,
+    Bitstream Vera Sans Mono, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 15px;
+  margin-top: 5px;
+}
 
-  .textBlock {
-    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
-    font-size: 14px;
-    line-height: 1.5;
-    padding: 15px;
-    margin-top: 5px;
-  }
-
-  .strikethrough:checked + span{
-    text-decoration:line-through 2px;
-  }
+.strikethrough:checked + span {
+  text-decoration: line-through 2px;
+}
 
 #footer {
-    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
-    font-size: 10px;
-    margin-left: 50px;
-    color:  rgb(252, 182, 183);
-    text-align: left;
+  font-family: Lucida Sans Typewriter, Lucida Console, monaco,
+    Bitstream Vera Sans Mono, monospace;
+  font-size: 10px;
+  margin-left: 50px;
+  color: rgb(252, 182, 183);
+  text-align: left;
 }

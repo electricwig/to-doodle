@@ -7,45 +7,28 @@
     <title>to-doodle</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
-    <!--script src="./index.js" defer></script-->
     <script src="./code.js" defer></script>
 </head>
-<!-- load toggleModes function on page load-->
+<!-- load startup() function on page load-->
 <body onload="startup();">
     <div id="toolbar">
         <button id="list">List Mode</button><button id="doodle">Doodle Mode</button><button id="clear-doodle">Clear Doodle</button><button id="clear-list">Clear List</button><button id="change-theme">Change Theme</label>
     </div>
-
-
         <div class="drawing-board">
             <canvas id="drawing-board"></canvas>
         </div>
 
-
-
         <main class="flex-container">
-
-            <aside class="sidebar" id="sidebar">
-                
+            <aside class="sidebar" id="sidebar">              
                 <h1 id="main-title">to-doodle</h1>
-                <p id="subtitle">
-                    What's on your to-do list today?
-                </p>
+                <p id="subtitle">What's on your to-do list today?</p>
 
-
-                    <textarea autofocus id="story" name="story" class="submitText"
-            rows="1" cols="38" onfocus="this.value=''">
-                    </textarea>
-                    
-                    <!--button id="list" style="width: 365px;">Add to List</button-->
-
-
-            
+                    <textarea autofocus id="story" name="story" class="submitText" rows="1" cols="38" onfocus="this.value=''"></textarea>      
             </aside>
 
             <section class="main-content" id="main-content">
 
-
+                <!-- to-do list items dynamically added here -->
 
             </section>
 
