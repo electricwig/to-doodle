@@ -112,6 +112,12 @@ function toggleModes() {
       doodleButton.style.color = "green";
       listButton.style.backgroundColor = "yellowgreen";
       listButton.style.color = "green";
+    } else {
+      // default on first startup
+      doodleButton.style.backgroundColor = "rgb(249, 206, 207)";
+      doodleButton.style.color = "black";
+      listButton.style.backgroundColor = "powderblue";
+      listButton.style.color = "black";
     }
     clearDoodle.style.display = "block";
     clearList.style.display = "none";
